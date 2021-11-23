@@ -14,9 +14,11 @@ $cartBody = ''; //this variable will hold the body for the table
     foreach($api_cars->data as $car) {
 
         $cartBody .= "<div class='card text-center text-white bg-primary' style='width: 18rem; font-size: 1.2rem'>
-        <p class='card-title'> {$car->name} </p>
+        <p class='card-title'> {$car->car_id} </p>
         <div class='card-body'>
             <p class='card-text'> {$car->name} </p>
+
+            <p class='card-text'> {$car->price} </p>
           </p>
         </div>
     </div>";
