@@ -26,3 +26,5 @@ if ($result) {
 } else {
     response_all(400, 'error: ' . mysqli_error($db_connect));
 }
+
+?>

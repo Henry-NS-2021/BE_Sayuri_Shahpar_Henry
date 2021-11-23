@@ -1,25 +1,22 @@
 <?php
 
-require_once 'web_service_cars.php';
-$api = 'http://localhost/BE_SHAHPAR_HENRY/Shahpar/restFulCars/web_service_cars.php';
-var_dump($api );
-$api_encode= json_encode($api) ;
+require_once 'restFulCars/rest.php';
 
+$api = 'http://localhost/BE_SHAHPAR_HENRY/Shahpar/restFulCars/web_service_cars.php';
+
+$result= curl_get($api) ;
+
+$api_cars = json_decode($result);
 $cartBody = ''; //this variable will hold the body for the table
-if (array_count_values($$api_encode) > 0) {
-    while ($$api_encode < 0) {
-        $cartBody .= "<div class='card text-center text-white bg-primary' style='width: 18rem; font-size: 1.2rem'>
-        <p class='card-title'> {$weather->timezone} </p>
-        <div class='card-body'>
-            <p class='card-text'> {$weather->currently->summary} </p>
-            <p class='card-text'>{$celsius}°C</p>
-            <p class='card-text'>{$fahrenheit}°F</p>
-        </div>
-    </div>";
-    };
-} else {
-    $cartBody =  "<p><center>No Data Available </center></p>";
-}
+
+   
+
+    foreach($api_cars->data as $car) {
+        echo  $car->name . "<br>";
+    }
+    
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,9 +27,9 @@ if (array_count_values($$api_encode) > 0) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cars Exercise</title>
         <!-- Bootstrap css -->
-        <?php require_once '../components/boot_css.php' ?>
+        <?php require_once 'components/boot_css.php' ?>
     <!-- Fontawesome css -->
-    <?php require_once '../components/fontawesome.php'; ?>
+    <?php require_once 'components/fontawesome.php'; ?>
 </head>
 
 <body>
@@ -40,7 +37,8 @@ if (array_count_values($$api_encode) > 0) {
     <div class="container">
 
         <div id="cars-wrapper" class="row">
-        <?= $cartBody; ?>
+        <!--  -->
+        test
         </div>
 
     </div>
